@@ -14,13 +14,11 @@ function setActiveButton(mode) {
   if (label) label.textContent = LABELS[mode] || mode;
 }
 
-// Load and show the current setting
 api.runtime.sendMessage({ type: 'get-theme' }, (response) => {
   if (api.runtime.lastError) return;
   setActiveButton((response && response.mode) || 'system');
 });
 
-// Handle button clicks
 document.querySelectorAll('.theme-btn').forEach((btn) => {
   btn.addEventListener('click', () => {
     const mode = btn.dataset.mode;

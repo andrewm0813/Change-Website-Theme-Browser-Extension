@@ -25,7 +25,6 @@ body {
   user-select: none;
 }
 
-/* ── Container ────────────────────────────────────────────────────────────── */
 .container {
   padding: 20px 18px 18px;
   display: flex;
@@ -33,7 +32,6 @@ body {
   gap: 14px;
 }
 
-/* ── Header ───────────────────────────────────────────────────────────────── */
 header {
   display: flex;
   align-items: center;
@@ -52,14 +50,12 @@ h1 {
   color: var(--text);
 }
 
-/* ── Subtitle ─────────────────────────────────────────────────────────────── */
 .subtitle {
   font-size: 12px;
   color: var(--subtext);
   line-height: 1.4;
 }
 
-/* ── Button group ─────────────────────────────────────────────────────────── */
 .btn-group {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -108,7 +104,6 @@ h1 {
   letter-spacing: 0.03em;
 }
 
-/* ── Current mode indicator ───────────────────────────────────────────────── */
 .current-mode {
   font-size: 12px;
   color: var(--subtext);

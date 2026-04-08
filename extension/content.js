@@ -22,9 +22,6 @@ function applyTheme(mode) {
   style.id = STYLE_ID;
 
   if (mode === 'dark') {
-    // color-scheme: dark  tells the browser / site to prefer dark rendering.
-    // The @media block adds a CSS-filter invert fallback for sites that
-    // ignore color-scheme (only fires when the OS is set to light).
     style.textContent = `
       :root { color-scheme: dark !important; }
       @media (prefers-color-scheme: light) {
@@ -42,7 +39,6 @@ function applyTheme(mode) {
       }
     `;
   } else if (mode === 'light') {
-    // Mirror logic for forcing light on systems set to dark.
     style.textContent = `
       :root { color-scheme: light !important; }
       @media (prefers-color-scheme: dark) {
@@ -61,24 +57,20 @@ function applyTheme(mode) {
     `;
   }
 
-  // Insert at the top of <head> (or <html>) before any other styles so it
-  // can be overridden by site styles when color-scheme is respected.
   const target = document.head || document.documentElement;
   target.insertBefore(style, target.firstChild);
 
   document.documentElement.classList.add('__tf-invert');
 }
 
-// Re-apply whenever the background broadcasts a theme change.
 api.runtime.onMessage.addListener((msg) => {
   if (msg && msg.type === 'apply-theme') {
     applyTheme(msg.mode);
   }
 });
 
-// Ask the background for the stored setting as soon as the script loads.
 api.runtime.sendMessage({ type: 'get-theme' }, (response) => {
-  if (api.runtime.lastError) return; // tab not connected yet — safe to ignore
+  if (api.runtime.lastError) return;
   if (response && response.mode) {
     applyTheme(response.mode);
   }

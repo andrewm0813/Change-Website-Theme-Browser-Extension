@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Theme Force",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Force websites to use dark mode, light mode, or your system default.",
   "permissions": [
     "storage",
@@ -21,7 +21,8 @@
     }
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "scripts": ["background.js"]
   },
   "content_scripts": [
     {
